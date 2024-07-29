@@ -1,0 +1,2 @@
+${process.env.PUBLIC_URL}
+Este codigo accede a la dirección física en la que se encuentra el proyecto
