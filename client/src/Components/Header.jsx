@@ -9,7 +9,7 @@ export function Header(){
                 
                 
                    
-                    <NavLink className={"logo-header"} to="/" target="_blank" rel="noopener noreferrer">
+                    <NavLink className={"logo-header"} to="/" rel="noopener noreferrer">
                         <img src="" alt="Logo de la app"/>
                     
                     </NavLink>

@@ -61,7 +61,7 @@ export function Home (){
     },]
     return (
         <>
-        <Header/>
+        
         <main className={styleMain["container-main"]}>
             <section className={styleMain["container-img-background"]}>
                 <h1>WELCOME TO I´M BETTER</h1>

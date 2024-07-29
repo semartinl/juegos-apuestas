@@ -42,6 +42,7 @@
 /* Regla de estilos para la lista de reviews de la vista principal */
 .container-lista-reviews{
     display: flex;
+    gap:8px 0;
     justify-content: space-between;
     flex-wrap: wrap;
 
