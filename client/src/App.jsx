@@ -4,7 +4,7 @@ import { Home } from './Routes/Home'
 import { LogIn } from './Routes/LogIn'
 import { SignUp } from './Routes/SignUp'
 import { Header } from './Components/Header'
-
+import { AuthProvider } from './context/AuthProvider'
 import './App.css'
 
 function App() {
@@ -13,7 +13,8 @@ function App() {
   return (
     <>
       
-      <BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
       
         <Header/>
       <Routes>
@@ -23,6 +24,7 @@ function App() {
       </Routes>
       
       </BrowserRouter>
+      </AuthProvider>
       
     </>
   )

@@ -4,12 +4,16 @@ import bcrypt from "bcryptjs";
 import { createAccessToken } from "../libs/jwt.js";
 
 export const register = async (req, res) => {
-    res.header('Acc')
+   
     const { email, password, username } = req.body;
 
 
     try {
         //sirve para encryptar con has la contraseña
+        {const userFound = await User.findOne({email}) //Es necesario el await para que realize la espera correctamente y la función devuelva los datos correctos
+        if(userFound) {
+            return res.status(400).json({message:["Email already exists"]});
+            }}
         const passwordhash = await bcrypt.hash(password, 10);
         const newUser = new User({
             username,
@@ -48,12 +52,12 @@ export const login = async (req, res) => {
         //buscamos le usaurio en la abse de datos 
         const UserFound = await User.findOne({ email });
         //si no se encuentra devolvemos un error 
-        if (!UserFound) return res.status(400).json({ messsage: "User not founded" });
+        if (!UserFound) return res.status(400).json({ messsage: ["User not founded"] });
 
         //sirve para encryptar con has la contraseña
         const isMatch = await bcrypt.compare(password, UserFound.password);
 
-        if (!isMatch) return res.status(400).json({ messsage: "incorrect mails or password" });
+        if (!isMatch) return res.status(400).json({ messsage: ["Incorrect mails or password"] });
 
         const token = await createAccessToken({ id: UserFound._id });
 

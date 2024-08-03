@@ -10,7 +10,8 @@ const varGlobales = {
                     body: JSON.stringify(user),
                     }
 },
-    URLAPI: "http://localhost:5000/api"
+    URLAPI: "http://localhost:5000/api",
+    urlOrigen : "http://localhost:5173/"
 
 }
 export default varGlobales;

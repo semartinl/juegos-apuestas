@@ -1,13 +1,24 @@
 import styleMain from './../css/main.module.css'
 import styleForm from './../css/form.module.css'
-import user from '../Controllers/user'
-import { useState } from 'react'
+import { auth } from '../Controllers/user'
+import { useEffect, useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
+
 export function SignUp(){
     const [username, setUsername] = useState("")
     const [gmail, setGmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const navigate = useNavigate()
     const [error, setError] = useState("")
+    const { isAuthenticated, signup, authErrors, setAuthErrors } = useAuth()
+
+    useEffect(()=>{
+        if(authErrors)
+            setAuthErrors([])
+        
+    },[])
 
     const handleSubmit = (event)=>{
         event.preventDefault()
@@ -17,12 +28,16 @@ export function SignUp(){
             password: `${password}`
             }
         try {
-            user.register(obUser).then((response) => console.log(response))
-            .catch((error)=>setError(error.message))
+            // auth.register(obUser).then((response) => console.log(response))
+            // .catch((error)=>setError(error.message))
+            signup(obUser)
+            
             
         } catch (error) {
-            setError(error)
+            setError(error.message)
         }
+        if(isAuthenticated)
+            navigate("/")
         }
     return (
         <main className={styleMain["container-main"]}>
@@ -37,7 +52,8 @@ export function SignUp(){
                 <label htmlFor="username">Confirmar contraseña</label>            
                 <input className='cicle-border' onChange={(e)=>setConfirmPassword(e.target.value)} value={confirmPassword} type="password" name="confirm-password" id="confirm-password" required/>
                 <input className='cicle-border' type="submit" value="Registrarse" />
-                <h2>{error}</h2>
+                
+                {authErrors && authErrors.map((err, i) => <h2 key={i}>{err}</h2>)}
             </form>
         </main>
     )

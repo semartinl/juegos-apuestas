@@ -1,7 +1,7 @@
 import axios, { AxiosHeaders } from 'axios'
 import varGlobales from './constantes'
 const urlApi = varGlobales.URLAPI
-const user = {
+export const auth = {
     // login: async (user)=>{
     //     const response = await fetch('http://localhost:5000/api/login', {
     //         method: 'POST',
@@ -38,9 +38,14 @@ const user = {
         
         const response = await axios.post(`${urlApi}/login`,user,{'Access-Control-Allow-Origin' : '*'})
             return response.data;
+    },
+    logout: async ()=>{
+        const response = await axios.post(`${urlApi}/login`,user,{'Access-Control-Allow-Origin' : '*'})
+        return response;
     }
+
 }
-export default user;
+
 
 // export const userAxios = {
     // login: async (user)=>{
