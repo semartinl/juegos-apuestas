@@ -11,7 +11,7 @@ const varGlobales = {
                     }
 },
     URLAPI: "http://localhost:5000/api",
-    urlOrigen : "http://localhost:5173/"
+    urlOrigen : "http://localhost:5173"
 
 }
 export default varGlobales;

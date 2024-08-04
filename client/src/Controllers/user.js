@@ -1,6 +1,6 @@
-import axios, { AxiosHeaders } from 'axios'
+import instance from './config-axios'
 import varGlobales from './constantes'
-const urlApi = varGlobales.URLAPI
+
 export const auth = {
     // login: async (user)=>{
     //     const response = await fetch('http://localhost:5000/api/login', {
@@ -31,17 +31,21 @@ export const auth = {
     //         return data;
     // },
     register: async (user)=>{
-        const response = await axios.post(`${urlApi}/register`, user, {'Access-Control-Allow-Origin' : '*'})
+        const response = await instance.post(`/register`, user/* , {'Access-Control-Allow-Origin' : '*'} */)
         return response.data;
     },
         login: async (user)=>{
         
-        const response = await axios.post(`${urlApi}/login`,user,{'Access-Control-Allow-Origin' : '*'})
+        const response = await instance.post(`/login`,user/* ,{'Access-Control-Allow-Origin' : '*'} */)
             return response.data;
     },
     logout: async ()=>{
-        const response = await axios.post(`${urlApi}/login`,user,{'Access-Control-Allow-Origin' : '*'})
+        const response = await instance.post(`/logout`/* ,{'Access-Control-Allow-Origin' : '*'} */)
         return response;
+    },
+    verifyToken: async ()=>{
+        const response = await instance.get('/verify')
+        return response.data;
     }
 
 }
