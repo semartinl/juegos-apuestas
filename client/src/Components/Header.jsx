@@ -32,7 +32,7 @@ export function Header(){
                         :
                         <>
                         
-                        <NavLink className={"icons-header"} to="/user" target="_blank" rel="noopener noreferrer">
+                        <NavLink className={"icons-header"} to="/user" rel="noopener noreferrer">
                             <img src={userIcon} alt="Foto de perfil" />
                         </NavLink>
                         <button className={"button-nav-header"} onClick={logout} > Log out</button>
