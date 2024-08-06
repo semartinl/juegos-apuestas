@@ -65,6 +65,8 @@ export function Home (){
         <main className={styleMain["container-main"]}>
             <section className={styleMain["container-img-background"]}>
                 <h1>WELCOME TO I´M BETTER</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus repudiandae, numquam velit molestias debitis tenetur ipsum eligendi mollitia. Vero quod officiis suscipit assumenda porro totam adipisci mollitia facilis aut debitis.</p>
+                <button className={"secondary-color-button cicle-border"}><h2>GET STARTED</h2></button>
                 
             </section>
             <section className={styleMain["container-lista-juegos"]}>

@@ -26,15 +26,16 @@ export function Header(){
                {!isAuthenticated? 
                         <>
                         
-                        <NavLink className={"button-nav-header signup-button"} to={"/signup"} > Sign up</NavLink>
+                        <NavLink className={"button-nav-header main-color-button"} to={"/signup"} > Sign up</NavLink>
                         <NavLink className={"button-nav-header"} to={"/login"} > Log in</NavLink>
                         </>
                         :
                         <>
-                        
-                        <NavLink className={"icons-header"} to="/user" rel="noopener noreferrer">
-                            <img src={userIcon} alt="Foto de perfil" />
-                        </NavLink>
+  
+                            <NavLink className={`icons-header icon-user-header`} to="/user" rel="noopener noreferrer">
+                                <img src={userIcon} alt="Foto de perfil" />
+                            <p>{user.username}</p>
+                            </NavLink>
                         <button className={"button-nav-header"} onClick={logout} > Log out</button>
                         </>
 

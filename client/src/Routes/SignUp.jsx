@@ -14,31 +14,30 @@ export function SignUp(){
     const [error, setError] = useState("")
     const { isAuthenticated, signup, authErrors, setAuthErrors } = useAuth()
 
-    useEffect(()=>{
-        if(authErrors)
-            setAuthErrors([])
-        
-    },[])
-
-    const handleSubmit = (event)=>{
+    const handleSubmit = async (event)=>{
         event.preventDefault()
-        const obUser = {
-            username:`${username}`,
-            email: `${gmail}`,
-            password: `${password}`
+        
+            
+            
+            const obUser = {
+                username:`${username}`,
+                email: `${gmail}`,
+                password: `${password}`
             }
-        try {
-            // auth.register(obUser).then((response) => console.log(response))
-            // .catch((error)=>setError(error.message))
-            signup(obUser)
-            
-            
-        } catch (error) {
-            setError(error.message)
-        }
-        if(isAuthenticated)
-            navigate("/")
-        }
+            try {
+                // auth.register(obUser).then((response) => console.log(response))
+                // .catch((error)=>setError(error.message))
+                await signup(obUser)
+                
+                
+            } catch (error) {
+                setError(error.message)
+            }
+            if(isAuthenticated)
+                navigate("/")
+        
+    }
+    
     return (
         <main className={styleMain["container-main"]}>
             <form onSubmit={handleSubmit} className={styleForm['main-form']}>
@@ -49,8 +48,6 @@ export function SignUp(){
                 <input className='cicle-border' onChange={(e)=>setGmail(e.target.value)} value={gmail} type="email" name="gmail" id="gmail"  required/>
                 <label htmlFor="password">Contraseña</label>            
                 <input className='cicle-border' onChange={(e)=>setPassword(e.target.value)} value={password} type="password" name="password" id="password" required/>
-                <label htmlFor="username">Confirmar contraseña</label>            
-                <input className='cicle-border' onChange={(e)=>setConfirmPassword(e.target.value)} value={confirmPassword} type="password" name="confirm-password" id="confirm-password" required/>
                 <input className='cicle-border' type="submit" value="Registrarse" />
                 
                 {authErrors && authErrors.map((err, i) => <h2 key={i}>{err}</h2>)}

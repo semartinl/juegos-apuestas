@@ -1,12 +1,20 @@
+button{
+    cursor: pointer;
+}
 .cicle-border{
-    border-radius: 5px;
+    border-radius: 20px;
 }
 .transparent-letter{
    color: rgba(255, 255, 255, 0.578);
 
 }
-.signup-button{
+.main-color-button{
     background-color: #4CAF50;
     
+}
+.secondary-color-button{
+    background-color: #1b5bc9;
+    border:none;
+
 }
 

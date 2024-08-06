@@ -32,3 +32,10 @@ header.barra-navegacion-top{
     background-color: #4CAF50;
     
 }
+.icon-user-header{
+    
+    flex-basis: content;
+    
+    
+    
+}
