@@ -8,3 +8,9 @@ body{
   box-sizing:border-box;
   color:white;
 }
+
+@media (max-width:576px) {
+    body > *{
+      margin:0 16px;
+    }
+}
