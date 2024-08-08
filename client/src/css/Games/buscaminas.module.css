@@ -1,0 +1,23 @@
+
+.tablero{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    margin:0 auto;
+
+}
+.row-tablero{
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    
+}
+
+.row-tablero .square{
+    flex-basis: 50px;
+    height: 50px;
+    margin:0 8px
+}
