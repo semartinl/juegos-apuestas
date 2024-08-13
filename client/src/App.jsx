@@ -9,6 +9,7 @@ import './App.css'
 import ProtectedRoute from './Routes/ProtectedRoute'
 import Buscaminas from './Routes/Games/Buscaminas'
 import GameHome from './Routes/Games/GameHome'
+import StatusGameProvider from './context/StatusGameProvider'
 function App() {
 
   
@@ -24,7 +25,11 @@ function App() {
         <Route path='/login' element={<LogIn />}/>
         <Route path='/signup' element={<SignUp />}/>
           <Route path='/games' element={<GameHome/>}/>
-          <Route path='/games/buscaminas' element={<Buscaminas/>}/>
+          <Route path='/games/buscaminas' element={
+            <StatusGameProvider>
+              <Buscaminas/>
+            </StatusGameProvider>
+            }/>
         <Route element={<ProtectedRoute/>}>
           <Route path='/user' element={<h1>CONFIG USER</h1>}></Route>
         </Route>
