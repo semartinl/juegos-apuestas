@@ -1,3 +1,4 @@
+@import "root.css";
 button{
     cursor: pointer;
 }
@@ -9,16 +10,16 @@ button{
 
 }
 .main-color-button{
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     
 }
 .secondary-color-button{
-    background-color: #1b5bc9;
+    background-color: var(--terciary-color);
     border:none;
 
 }
 .green-bg{
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
 }
 
 

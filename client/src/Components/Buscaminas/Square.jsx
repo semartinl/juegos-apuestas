@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styleGame from './../../css/Games/buscaminas.module.css'
+import style from './../../css/styles.module.css'
 import mineSVG from './../../assets/Games/bomb-solid.svg'
+
 import useStatusGame from '../../hooks/useStatusGame'
 function Square({xAxis, yAxis, isMine }) {
     
@@ -42,7 +44,7 @@ function Square({xAxis, yAxis, isMine }) {
       </>:
       isMine? 
       <div className={styleGame['bomb-square-incorrect']}></div>:
-      <div className={`${styleGame['square']} main-color-button`}></div>
+      <div className={`${styleGame['square']} ${style["correct"]}`}></div>
       }
     </>
 

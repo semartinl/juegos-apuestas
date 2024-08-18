@@ -1,0 +1,13 @@
+
+.mensaje{
+    height: 200px;
+    width: 200px;
+    
+    
+}
+.mensaje *{
+    color: var(--secundary-color);
+}
+.correct{
+    background-color: var(--primary-color);
+}

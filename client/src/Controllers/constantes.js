@@ -11,7 +11,13 @@ const varGlobales = {
                     }
 },
     URLAPI: "http://localhost:5000/api",
-    urlOrigen : "http://localhost:5173"
+    urlOrigen : "http://localhost:5173",
+    
 
 }
+// export const buscaminas = {
+//     rows: 8,
+//     columns: 8,
+//     numMines: this.rows * Math.floor(/5)
+// }
 export default varGlobales;

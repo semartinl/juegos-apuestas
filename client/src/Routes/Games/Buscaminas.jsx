@@ -1,106 +1,41 @@
 import { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import stylesMain from './../../css/main.module.css'
 import styleGame from './../../css/Games/buscaminas.module.css'
 import Square from '../../Components/Buscaminas/Square'
 import useStatusGame from '../../hooks/useStatusGame'
+import TableroBuscaminas from '../../Components/Buscaminas/TableroBuscaminas'
+import MensajeGanador from '../../Components/Mensajes/MensajeGanador'
+import MostrarTablero from '../../Components/Buscaminas/MostrarTablero'
+import funciones from '../../Controllers/funciones'
 function Buscaminas() {
-    const [tablero, setTablero] = useState(Array(Array(8)))
-    const [minas, setMinas] = useState([])
+    const [tablero, setTablero] = useState(null)
+    const [mines, setMines] = useState(8 * Math.floor(8/5))
+
     const {winner, setWinner, isOnePlayerNext, setNextPlayer} = useStatusGame()
 
     useEffect(()=>{
-
-    },[])
+      setTablero(funciones.crearTableroAleatorio(8,8,mines))
+    },[mines])
     
 
   return (
     <main className={stylesMain["container-main"]}>
+    
         <h1>BUSCAMINAS</h1>
+        {!winner?
+        <>
         <h3>Turno del jugador {isOnePlayerNext? "2":"1"}</h3>
-
-        <div className={styleGame['tablero']}>
+        <TableroBuscaminas columns={8} rows={8}/>
         
-            <div className={styleGame['row-tablero']}>
-                <Square xAxis={0} yAxis={0} isMine={false}/>
-                <Square xAxis={0} yAxis={0} isMine={true}/>
-                <Square xAxis={0} yAxis={0} isMine={true}/>
-                <Square xAxis={0} yAxis={0} isMine={true}/>
-                <Square xAxis={0} yAxis={0} isMine={true}/>
-                <Square xAxis={0} yAxis={0} isMine={true}/>
-                <Square xAxis={0} yAxis={0} isMine={true}/>
-                <Square xAxis={0} yAxis={0} isMine={true}/>
-            </div>
-            <div className={styleGame['row-tablero']}>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-            </div>
-            <div className={styleGame['row-tablero']}>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-            </div>
-            <div className={styleGame['row-tablero']}>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-            </div>
-            <div className={styleGame['row-tablero']}>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-            </div>
-            <div className={styleGame['row-tablero']}>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-            </div>
-            <div className={styleGame['row-tablero']}>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-            </div>
-            <div className={styleGame['row-tablero']}>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-                <button className={styleGame['square']}>1</button>
-            </div>
-        </div>
+        </>:
+        <>
+        
+        <MensajeGanador winner={winner}/>
+        <MostrarTablero tablero={tablero}/>
+        </>
+        }
+            
     </main>
   )
 }
